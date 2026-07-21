@@ -13,7 +13,7 @@ Pulau Jawa merupakan wilayah dengan potensi pariwisata yang sangat besar. Namun,
 Proyek ini bertujuan untuk membangun sebuah basis pengetahuan (*knowledge base*) bagi sistem rekomendasi destinasi wisata di Pulau Jawa. Dengan mengadopsi kerangka kerja CRISP-DM, proyek ini memanfaatkan teknik *Data Mining* untuk memproses ribuan data *User-Generated Content* (UGC) berupa *rating* dan jumlah ulasan. Hasil akhirnya adalah segmentasi objek wisata secara otomatis menjadi beberapa klaster bermakna yang dapat digunakan untuk merekomendasikan rute perjalanan yang lebih personal dan objektif.
 
 ## Sumber Dataset
-Dataset dalam penelitian ini merupakan data sekunder (Point of Interest/POI) yang diekstraksi dari **Google Maps**. Proses pengumpulan data dilakukan menggunakan teknik *web scraping* melalui platform otomasi *cloud* **Apify** pada periode 2 hingga 16 Juni 2026. Data mentah berisikan 986 baris destinasi wisata yang tersebar di wilayah utama Pulau Jawa.
+Dataset dalam penelitian ini merupakan data sekunder (Point of Interest/POI) yang diekstraksi dari **Google Maps**. Proses pengumpulan data dilakukan menggunakan teknik *web scraping* melalui platform otomasi *cloud* **Apify** pada periode 2 hingga 16 Juni 2026. Data mentah berisikan 1090 baris destinasi wisata yang tersebar di wilayah utama Pulau Jawa.
 
 ## Langkah Preprocessing
 Untuk memastikan kualitas data sebelum dimasukkan ke dalam algoritma, dilakukan tahapan prapemrosesan berikut:
