@@ -29,8 +29,8 @@ Untuk memastikan kualitas data sebelum dimasukkan ke dalam algoritma, dilakukan 
 Pemodelan dievaluasi menggunakan dua metrik internal, yaitu **Elbow Method (Inertia)** dan **Silhouette Coefficient**.
 - **Hasil Pengujian:** Eksperimen iteratif dilakukan dari K=2 hingga K=10. Skenario terbaik ditemukan pada **K=3**.
 - **Metrik Model (K=3):** 
-  - Silhouette Score: `0.3666` (Terbaik, menunjukkan separasi antar klaster yang tegas).
-  - Inertia (WCSS): `828.894`.
+  - Silhouette Score: `0.3668` (Terbaik, menunjukkan separasi antar klaster yang tegas).
+  - Inertia (WCSS): `795.070`.
 - **Interpretasi Klaster:**
   1. **Cluster Khusus / Niche (Hijau):** Destinasi *hidden gem* atau baru dengan jumlah ulasan paling rendah dan rating bervariasi.
   2. **Cluster Populer Sedang (Oranye):** Destinasi wisata lokal dengan jumlah ulasan menengah dan rating stabil.
