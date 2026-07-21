@@ -27,6 +27,11 @@ Untuk memastikan kualitas data sebelum dimasukkan ke dalam algoritma, dilakukan 
 
 ## Evaluasi & Hasil
 Pemodelan dievaluasi menggunakan dua metrik internal, yaitu **Elbow Method (Inertia)** dan **Silhouette Coefficient**.
+1. **Elbow Method (Inertia / WCSS):**
+Mengukur total jarak kuadrat antara setiap titik data dengan pusat klasternya (*centroid*). Semakin kecil nilai Inertia, semakin rapat data di dalam satu klaster. Penurunan nilai Inertia dari $K=2$ ke $K=3$ terbukti sangat signifikan. Setelah $K=3$, penurunan nilai Inertia mulai melambat (*plateau*), menandakan bahwa menambah klaster baru setelah $K=3$ tidak lagi memberikan peningkatan kerapatan yang signifikan.
+
+2. **Silhouette Coefficient:**
+Mengukur seberapa mirip suatu data dengan klasternya sendiri dibandingkan dengan klaster terdekat lainnya (*range* nilai $-1$ hingga $+1$). Semakin mendekati $1$, semakin jelas pemisahan/separasi antar-klaster. Skenario **$K=3$ menghasilkan Silhouette Score tertinggi (`0.3666`)**, mengonfirmasi bahwa $K=3$ memiliki struktur pemisahan yang paling optimal dibanding rentang $K$ lainnya ($K=2$ hingga $K=10$).
 - **Hasil Pengujian:** Eksperimen iteratif dilakukan dari K=2 hingga K=10. Skenario terbaik ditemukan pada **K=3**.
 - **Metrik Model (K=3):** 
   - Silhouette Score: `0.3668` (Terbaik, menunjukkan separasi antar klaster yang tegas).
