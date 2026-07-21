@@ -18,9 +18,13 @@ Dataset dalam penelitian ini merupakan data sekunder (Point of Interest/POI) yan
 ## Langkah Preprocessing
 Untuk memastikan kualitas data sebelum dimasukkan ke dalam algoritma, dilakukan tahapan prapemrosesan berikut:
 1. **Data Cleaning:** Menghapus baris dengan nilai kosong (*Null/Missing Values*) pada kolom target dan mengeleminasi destinasi wisata yang berada di luar Pulau Jawa.
-2. **Filtering:** Menyaring destinasi wisata untuk hanya mempertahankan lokasi dengan jumlah ulasan minimal 100 (`reviewsCount > 100`) guna menjaga validitas popularitas.
-3. **Log Transformation:** Menerapkan transformasi matematis logaritmik (`np.log1p`) pada kolom `reviewsCount` untuk mengatasi ketimpangan distribusi data yang sangat ekstrem (*right-skewed*).
-4. **Feature Scaling:** Melakukan standardisasi fitur menggunakan `StandardScaler` agar rentang nilai *rating* (1-5) dan jumlah ulasan (puluhan ribu) memiliki bobot yang setara saat dihitung jaraknya oleh algoritma.
+2. **Text Cleaning:** Memperbaiki penulisan nama kota yang masih berupa singkatan menjadi nama lengkap agar seragam.
+3. **Regex Replacement:** Menerjemahkan format penamaan kota dari bahasa inggris ke bahasa Indonesia.
+4. **Domain Filtering:** Menghapus baris data yang wilayahnya tidak termasuk dalam Pulau Jawa.
+5. **Feature Selection:** Membuang kolom yang tidak perlu, hanya mempertahankan 5 kolom esensial untuk dianalisis.
+6. **Filtering:** Menyaring destinasi wisata untuk hanya mempertahankan lokasi dengan jumlah ulasan minimal 100 (`reviewsCount > 100`) guna menjaga validitas popularitas.
+7. **Log Transformation:** Menerapkan transformasi matematis logaritmik (`np.log1p`) pada kolom `reviewsCount` untuk mengatasi ketimpangan distribusi data yang sangat ekstrem (*right-skewed*).
+8. **Feature Scaling:** Melakukan standardisasi fitur menggunakan `StandardScaler` agar rentang nilai *rating* (1-5) dan jumlah ulasan (puluhan ribu) memiliki bobot yang setara saat dihitung jaraknya oleh algoritma.
 
 ## Algoritma yang Digunakan
 - **K-Means Clustering:** Algoritma *unsupervised learning* yang digunakan untuk mensegmentasi destinasi wisata ke dalam beberapa kelompok homogen berdasarkan jarak *Euclidean*.
@@ -31,7 +35,7 @@ Pemodelan dievaluasi menggunakan dua metrik internal, yaitu **Elbow Method (Iner
 Mengukur total jarak kuadrat antara setiap titik data dengan pusat klasternya (*centroid*). Semakin kecil nilai Inertia, semakin rapat data di dalam satu klaster. Penurunan nilai Inertia dari $K=2$ ke $K=3$ terbukti sangat signifikan. Setelah $K=3$, penurunan nilai Inertia mulai melambat (*plateau*), menandakan bahwa menambah klaster baru setelah $K=3$ tidak lagi memberikan peningkatan kerapatan yang signifikan.
 
 2. **Silhouette Coefficient:**
-Mengukur seberapa mirip suatu data dengan klasternya sendiri dibandingkan dengan klaster terdekat lainnya (*range* nilai $-1$ hingga $+1$). Semakin mendekati $1$, semakin jelas pemisahan/separasi antar-klaster. Skenario **$K=3$ menghasilkan Silhouette Score tertinggi (`0.3666`)**, mengonfirmasi bahwa $K=3$ memiliki struktur pemisahan yang paling optimal dibanding rentang $K$ lainnya ($K=2$ hingga $K=10$).
+Mengukur seberapa mirip suatu data dengan klasternya sendiri dibandingkan dengan klaster terdekat lainnya (*range* nilai $-1$ hingga $+1$). Semakin mendekati $1$, semakin jelas pemisahan/separasi antar-klaster. Skenario **$K=3$ menghasilkan Silhouette Score tertinggi (`0.3668`)**, mengonfirmasi bahwa $K=3$ memiliki struktur pemisahan yang paling optimal dibanding rentang $K$ lainnya ($K=2$ hingga $K=10$).
 - **Hasil Pengujian:** Eksperimen iteratif dilakukan dari K=2 hingga K=10. Skenario terbaik ditemukan pada **K=3**.
 - **Metrik Model (K=3):** 
   - Silhouette Score: `0.3668` (Terbaik, menunjukkan separasi antar klaster yang tegas).
